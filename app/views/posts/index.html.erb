@@ -14,8 +14,10 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= image_tag post.image.url %></td>
+        <td><%= post.content %></td>  
+        <td>
+          <%= image_tag post.image.url if post.image.url.present? %>
+        </td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,3 +29,27 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">Bootstrap</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bootstrap
+      </a>
+    </div>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="">top</a></li>
+        <li><a href="">menu1</a></li>
+        <li><a href="">menu2</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

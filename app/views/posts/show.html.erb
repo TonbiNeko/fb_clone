@@ -5,10 +5,12 @@
   <%= @post.title %>
 </p>
 
-<p>
-  <strong>image:</strong>
-  <%= image_tag @post.image.url %>
-</p>
+<% if @post.image.url.present? %>
+  <p>
+    <strong>image:</strong>
+    <%= image_tag @post.image.url %>
+  </p>
+<% end %>
 
 <p>
   <strong>Content:</strong>
