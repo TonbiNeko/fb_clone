@@ -1,3 +1,29 @@
-<h1><%= @user.name %>のページ</h1>
-<p>メールアドレス<%= @user.email %></p>
+<h1><%= @user.name %>'s Page</h1>
+<p>email: <%= @user.email %></p>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<tbody>
+<% @user.posts.each do |post| %>
+  <tr>
+    <td><%= post.user.name%></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>  
+    <td>
+      <%= image_tag post.image.url if post.image.url.present? %>
+    </td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
 <%= link_to "new post", new_post_path %>
