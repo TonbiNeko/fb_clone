@@ -72,4 +72,9 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :content)
     end
+
+    #test
+    def feed_params
+      params.require(:feed).permit(:image, :image_cache)
+    end
 end
