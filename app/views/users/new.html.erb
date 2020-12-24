@@ -1,24 +1,31 @@
 <%= form_with(model: @user, local: true) do |f| %>
-  <h1>Sign up</h1>
+  <h1>Sign Up</h1>
+  <p class="sign_up">It's quick and easy.</p>
+
   <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-offset-3 col-md-6">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "name" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control", placeholder: "email" %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+    <br>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation,class: "form-control", placeholder: "password_confirmation" %>
+    <br>
+    <br>
+    <%= f.submit "Sign Up",class: "btn btn-lg btn-success" %>
   </div>
-<% end %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <br>
-  <%= f.submit "Create my account" %>
 <% end %>
