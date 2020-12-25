@@ -16,10 +16,11 @@
  */
 
 
- html {
+html {
   position: relative;
   min-height: 100%;
 }
 body {
   text-align: center;
+  background-color: rgb(212, 201, 201);
 }

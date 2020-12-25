@@ -6,18 +6,18 @@
 <br>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <div class="col-md-offset-3 col-md-6">
-  <%= f.label :email %>
-  <%= f.email_field :email, class: "form-control", placeholder: "email" %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password, class: "form-control", placeholder: "password"  %>
-  <br>
-  <br>
-  <%= f.submit"Log in", class: "btn btn-lg btn-primary" %>
-  <br>
-  <%= link_to "Forgotten password?","#" %>
-  <br>
-  <br>
-  <%= link_to "Create new account", new_user_path, class: "btn btn-lg btn-warning" %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control", placeholder: "email" %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control", placeholder: "password"  %>
+    <br>
+    <br>
+    <%= f.submit"Log in", class: "btn btn-lg btn-primary" %>
+    <br>
+    <%= link_to "Forgotten password?","#" %>
+    <br>
+    <br>
+    <%= link_to "Create new account", new_user_path, id: "log-in-btn", class: "btn btn-lg btn-warning" %>
   </div>
 <% end %>

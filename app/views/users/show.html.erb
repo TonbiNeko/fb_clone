@@ -1,29 +1,56 @@
-<h1><%= @user.name %>'s Page</h1>
-<p>email: <%= @user.email %></p>
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-<tbody>
-<% @user.posts.each do |post| %>
-  <tr>
-    <td><%= post.user.name%></td>
-    <td><%= post.title %></td>
-    <td><%= post.content %></td>  
-    <td>
-      <%= image_tag post.image.url if post.image.url.present? %>
-    </td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>
-<%= link_to "new post", new_post_path %>
+<div class="container-fluid">
+  <header>    
+    <div id="logo" class="col-md-12">
+      <%= image_tag 'logo.png', size: '250x50' %>
+    </div>
+    <div class="col-md-12">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+              <span class="sr-only">fb-clone</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="gnavi" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Profile", user_path(current_user.id) %></li>
+              <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+              <li><%= link_to "new post", new_post_path %></li>
+            </ul>
+          </div>
+        </div>
+     </nav>
+   </div>
+  </header>
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+      <h1><%= @user.name %>'s Page</h1>
+      <h4>email: <%= @user.email %></h4>
+      <%= link_to "new post", new_post_path, class: "btn btn-lg btn-info" %>
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <% @user.posts.each do |post| %>
+        <div class="card" style="width: 70rem;">
+          <div class="card-body">      
+            <div id="left">
+              <%= image_tag 'fb_maru_logo.jpeg', size: '100x50' %>
+              <%= post.user.name %>
+            </div>
+            <br>
+            <%= post.title %>
+            <br>
+            <%= image_tag(post.image.url, class: "card-img-top") if post.image.url.present? %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= post.content %></li>
+            </ul>
+            <%= link_to 'Show', post,class: "btn btn-primary" %>
+            <%= link_to 'Edit', edit_post_path(post),class: "btn btn-primary" %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
