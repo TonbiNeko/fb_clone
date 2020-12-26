@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <header>    
     <div id="logo" class="col-md-12">
-      <%= image_tag 'logo.png', size: '250x50' %>
+    <%= link_to image_tag("logo.png",size: '250x50'), posts_path %>
     </div>
     <div class="col-md-12">
       <nav class="navbar navbar-default">
@@ -25,32 +25,28 @@
      </nav>
    </div>
   </header>
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+      <%= link_to "new post", new_post_path, class: "btn btn-lg btn-info" %>
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <div class="card" style="width: 70rem;">
+        <div class="card-body"> 
+          <h2><%= "#{current_user.name}'s post" %></h2>
+          <br>
+          <%= @post.title %>
+          <br>
+          <% if @post.image.url.present? %>
+            <%= image_tag @post.image.url %>
+          <% end %>
+          <br>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= @post.content %></li>
+          </ul>
+          <%= link_to 'Edit', edit_post_path(@post),class: "btn btn-primary" %>
+          <%= link_to 'Back', posts_path,class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
-
-<p>
-  <strong><%= "#{current_user.name}'s post" %></strong>
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<% if @post.image.url.present? %>
-  <p>
-    <strong>image:</strong>
-    <%= image_tag @post.image.url %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
