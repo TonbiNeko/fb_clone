@@ -24,3 +24,12 @@ body {
   text-align: center;
   background-color: rgb(212, 201, 201);
 }
+#logo {
+  padding-top: 30px;
+}
+a:hover {
+  background-color: transparent;
+}
+a:visited {
+  color: white;
+}

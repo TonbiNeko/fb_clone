@@ -1,5 +1,40 @@
+<div class="container-fluid">
+  <header>    
+    <div id="logo" class="col-md-12">
+      <%= image_tag 'logo.png', size: '250x50' %>
+    </div>
+    <div class="col-md-12">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+              <span class="sr-only">fb-clone</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="gnavi" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Profile", user_path(current_user.id) %></li>
+              <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+              <li><%= link_to "new post", new_post_path %></li>
+            </ul>
+          </div>
+        </div>
+     </nav>
+   </div>
+  </header>
+</div>
+
+
+
+
+
+
+
 <p>
-  <strong><%= "#{current_user.name}'s post!" %></strong>
+  <strong><%= "#{current_user.name}'s post" %></strong>
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
